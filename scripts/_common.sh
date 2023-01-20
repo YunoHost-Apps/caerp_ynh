@@ -64,7 +64,7 @@ __ynh_endi_build() {
 
     pushd "$final_path/endi" 2>&1
         ynh_exec_as $app "$final_path/venv/bin/python3" ./setup.py install 2>&1
-    popd
+    popd 2>&1
 
     chmod 750 "$final_path"
     chmod -R o-rwx "$final_path"
@@ -72,14 +72,18 @@ __ynh_endi_build() {
 }
 
 __ynh_endi_migratedb() {
-    ynh_exec_as $app "$final_path/venv/bin/endi-admin" "$final_path/endi.ini" \
-        syncdb
-}
+    pushd "$final_path" 2>&1
+        ynh_exec_as $app "$final_path/venv/bin/endi-admin" "$final_path/endi.ini" \
+            syncdb
+    popd 2>&1
+ }
 
 __ynh_endi_add_admin() {
-    ynh_exec_as $app "$final_path/venv/bin/endi-admin" "$final_path/endi.ini" \
-        useradd --group=admin --user="admin" --pwd="$password" --email="admin@$domain"
-}
+    pushd "$final_path" 2>&1
+        ynh_exec_as $app "$final_path/venv/bin/endi-admin" "$final_path/endi.ini" \
+            useradd --group=admin --user="admin" --pwd="$password" --email="admin@$domain"
+    popd 2>&1
+ }
 
 
 #=================================================
