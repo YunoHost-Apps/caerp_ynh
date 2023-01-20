@@ -145,6 +145,7 @@ chown $app:$app "$final_path/endi.ini"
 #=================================================
 
 mkdir "/var/log/$app"
+chown -R $app:$app "/var/log/$app"
 chmod 750 "/var/log/$app"
 
 #=================================================
