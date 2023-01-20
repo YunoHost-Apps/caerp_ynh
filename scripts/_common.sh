@@ -49,7 +49,7 @@ __ynh_endi_build() {
         ynh_exec_as $app $ynh_node_load_PATH $ynh_npm --prefix vue_sources install 2>&1
 
         ynh_script_progression --message="Building Web interface code..." --weight=1
-        ynh_exec_as $app make prodjs devjs prodjs2 devjs2 2>&1 \
+        ynh_exec_as $app $ynh_node_load_PATH make prodjs devjs prodjs2 devjs2 2>&1 \
             || ynh_die --message="Build of javascript code failed, maybe because of high RAM usage!"
     popd 2>&1
 
