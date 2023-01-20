@@ -139,6 +139,14 @@ ynh_add_config --template="endi.ini" --destination="$final_path/endi.ini"
 chmod 500 "$final_path/endi.ini"
 chown $app:$app "$final_path/endi.ini"
 
+
+#=================================================
+# CREATE LOG DIRECTORY
+#=================================================
+
+mkdir "/var/log/$app"
+chmod 750 "/var/log/$app"
+
 #=================================================
 # SETUP SYSTEMD
 #=================================================
