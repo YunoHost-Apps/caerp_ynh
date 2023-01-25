@@ -3,8 +3,8 @@
     "id": "endi",
     "packaging_format": 1,
     "description": {
-        "en": "A comptability software for CAE companies (french Communauté d'Activité et d'Emploi)",
-        "fr": "Un progiciel de gestion comptable à l'usage des CAE (Communauté d'Activité et d'Emploi)"
+        "en": "Comptability software for CAE companies (french Communauté d'Activité et d'Emploi)",
+        "fr": "Progiciel de gestion comptable à l'usage des CAE (Communauté d'Activité et d'Emploi)"
     },
     "version": "6.5.4~ynh1",
     "url": "https://endi.coop",
