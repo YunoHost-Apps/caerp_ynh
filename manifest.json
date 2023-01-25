@@ -16,7 +16,7 @@
         "userdoc": "https://doc.endi.coop",
         "code": "https://framagit.org/endi/endi"
     },
-    "license": "free",
+    "license": "GPLv3",
     "maintainer": {
         "name": "Salamandar",
         "email": "felix@piedallu.me"
