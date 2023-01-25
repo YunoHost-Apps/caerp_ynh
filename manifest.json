@@ -9,14 +9,14 @@
     "version": "6.5.4~ynh1",
     "url": "https://endi.coop",
     "upstream": {
-        "license": "GPLv3",
+        "license": "AGPL-3.0-or-later",
         "website": "https://endi.coop",
         "demo": "https://demo.endi.coop",
         "admindoc": "https://framagit.org/endi/endi",
         "userdoc": "https://doc.endi.coop",
         "code": "https://framagit.org/endi/endi"
     },
-    "license": "GPLv3",
+    "license": "AGPL-3.0-or-later",
     "maintainer": {
         "name": "Salamandar",
         "email": "felix@piedallu.me"
