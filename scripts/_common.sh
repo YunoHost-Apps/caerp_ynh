@@ -5,7 +5,7 @@
 #=================================================
 
 # dependencies used by the app (must be on a single line)
-pkg_dependencies=(
+#REMOVEME? pkg_dependencies=(
     python3-pip
     python3-venv
     cython3
@@ -33,7 +33,7 @@ pkg_dependencies=(
 __ynh_endi_patch_src() {
     # Patching requirements.txt to use system provided Cython
     cython_version=$(cython3 --version 2>&1 | sed 's|Cython version ||')
-    sed -i "s|Cython=.*|Cython==$cython_version|" "$final_path/endi/requirements.txt"
+    sed -i "s|Cython=.*|Cython==$cython_version|" "$install_dir/endi/requirements.txt"
 }
 
 __ynh_endi_build() {
@@ -43,8 +43,8 @@ __ynh_endi_build() {
     ynh_use_nodejs
     ynh_install_nodejs --nodejs_version=16
 
-    pushd "$final_path/endi" 2>&1
-        ynh_script_progression --message="Downloading NPM dependencies..." --weight=1
+    pushd "$install_dir/endi" 2>&1
+#REMOVEME?         ynh_script_progression --message="Downloading NPM dependencies..." --weight=1
         ynh_exec_as $app $ynh_node_load_PATH $ynh_npm --prefix js_sources install 2>&1
         ynh_exec_as $app $ynh_node_load_PATH $ynh_npm --prefix vue_sources install 2>&1
 
@@ -56,31 +56,31 @@ __ynh_endi_build() {
     #=================================================
     # Python + Virtualenv setup
     #=================================================
-    ynh_script_progression --message="Installing Python dependencies and Endi..." --weight=1
+#REMOVEME?     ynh_script_progression --message="Installing Python dependencies and Endi..." --weight=1
 
-    __ynh_python_venv_setup --venv_dir="$final_path/venv"
-    python_venv_site_packages=$(__ynh_python_venv_get_site_packages_dir -d "$final_path/venv")
-    chown -R $app:www-data "$final_path/venv"
+    __ynh_python_venv_setup --venv_dir="$install_dir/venv"
+    python_venv_site_packages=$(__ynh_python_venv_get_site_packages_dir -d "$install_dir/venv")
+    chown -R $app:www-data "$install_dir/venv"
 
-    pushd "$final_path/endi" 2>&1
-        ynh_exec_as $app "$final_path/venv/bin/python3" ./setup.py install 2>&1
+    pushd "$install_dir/endi" 2>&1
+        ynh_exec_as $app "$install_dir/venv/bin/python3" ./setup.py install 2>&1
     popd 2>&1
 
-    chmod 750 "$final_path"
-    chmod -R o-rwx "$final_path"
-    chown -R $app:www-data "$final_path"
+    chmod 750 "$install_dir"
+    chmod -R o-rwx "$install_dir"
+    chown -R $app:www-data "$install_dir"
 }
 
 __ynh_endi_migratedb() {
-    pushd "$final_path" 2>&1
-        ynh_exec_as $app "$final_path/venv/bin/endi-admin" "$final_path/endi.ini" \
+    pushd "$install_dir" 2>&1
+        ynh_exec_as $app "$install_dir/venv/bin/endi-admin" "$install_dir/endi.ini" \
             syncdb
     popd 2>&1
  }
 
 __ynh_endi_add_admin() {
-    pushd "$final_path" 2>&1
-        ynh_exec_as $app "$final_path/venv/bin/endi-admin" "$final_path/endi.ini" \
+    pushd "$install_dir" 2>&1
+        ynh_exec_as $app "$install_dir/venv/bin/endi-admin" "$install_dir/endi.ini" \
             useradd --group=admin --user="admin" --pwd="$password" --email="admin@$domain"
     popd 2>&1
  }
