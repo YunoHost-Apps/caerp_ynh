@@ -44,7 +44,7 @@ __ynh_endi_build() {
     ynh_install_nodejs --nodejs_version=16
 
     pushd "$install_dir/endi" 2>&1
-#REMOVEME?         ynh_script_progression --message="Downloading NPM dependencies..." --weight=1
+    ynh_script_progression --message="Downloading NPM dependencies..." --weight=1
         ynh_exec_as $app $ynh_node_load_PATH $ynh_npm --prefix js_sources install 2>&1
         ynh_exec_as $app $ynh_node_load_PATH $ynh_npm --prefix vue_sources install 2>&1
 
@@ -56,7 +56,7 @@ __ynh_endi_build() {
     #=================================================
     # Python + Virtualenv setup
     #=================================================
-#REMOVEME?     ynh_script_progression --message="Installing Python dependencies and Endi..." --weight=1
+    ynh_script_progression --message="Installing Python dependencies and Endi..." --weight=1
 
     __ynh_python_venv_setup --venv_dir="$install_dir/venv"
     python_venv_site_packages=$(__ynh_python_venv_get_site_packages_dir -d "$install_dir/venv")
