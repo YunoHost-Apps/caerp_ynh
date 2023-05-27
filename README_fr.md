@@ -6,6 +6,7 @@ It shall NOT be edited by hand.
 # enDI pour YunoHost
 
 [![Niveau d’intégration](https://dash.yunohost.org/integration/endi.svg)](https://dash.yunohost.org/appci/app/endi) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/endi.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/endi.maintain.svg)
+
 [![Installer enDI avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=endi)
 
 *[Read this readme in english.](./README.md)*
