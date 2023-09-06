@@ -18,7 +18,7 @@ Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) po
 
 enDI est un progiciel de gestion d'entreprise. C'est l'outil de pilotage de l'activité économique et sociale entièrement dédié aux CAE ainsi qu'à toute entreprise et collectif d'entrepreneur.euse.s indépendant.e.s.
 
-### Caractéristiques :
+### Fonctionnalités :
 
 - Gestion sociale des entrepreneurs
 - Gestion sociale et statistique de l'accompagnement pour le reporting aux financeurs
