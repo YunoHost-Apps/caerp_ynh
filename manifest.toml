@@ -1,3 +1,5 @@
+#:schema https://raw.githubusercontent.com/YunoHost/apps/master/schemas/manifest.v2.schema.json
+
 packaging_format = 2
 
 id = "endi"
@@ -30,7 +32,6 @@ ram.runtime = "50M"
 [install]
     [install.domain]
     type = "domain"
-    full_domain = true
 
     [install.init_main_permission]
     type = "group"
@@ -43,9 +44,9 @@ ram.runtime = "50M"
     type = "password"
 
 [resources]
-        [resources.sources.main]
-        url = "https://framagit.org/endi/endi/-/archive/8d2d1e9cbc495dd48712d380c9f039a4e5b877dc/endi-8d2d1e9cbc495dd48712d380c9f039a4e5b877dc.tar.gz"
-        sha256 = "16fdee654c59c1ce1f914ca5a620fb9cebd3d2bd5e03e9d4442e68a5daf559ae"
+    [resources.sources.main]
+    url = "https://framagit.org/endi/endi/-/archive/8d2d1e9cbc495dd48712d380c9f039a4e5b877dc/endi-8d2d1e9cbc495dd48712d380c9f039a4e5b877dc.tar.gz"
+    sha256 = "16fdee654c59c1ce1f914ca5a620fb9cebd3d2bd5e03e9d4442e68a5daf559ae"
 
     [resources.ports]
 
@@ -56,10 +57,28 @@ ram.runtime = "50M"
     [resources.permissions]
     main.url = "/"
     admin.url = "/admin"
-    admin.url = "admins"
 
     [resources.apt]
-    packages = "mariadb_server python3-pip python3-venv cython3 npm python3-mysqldb libmariadb-dev-compat mariadb-client libjpeg-dev libfreetype6 libfreetype6-dev libssl-dev libxml2-dev zlib1g-dev libxslt1-dev libcairo2 libpango-1.0-0 libpangocairo-1.0-0"
+    packages = [
+        "mariadb_server",
+        "python3-pip",
+        "python3-venv",
+        "cython3",
+        "npm",
+        "python3-mysqldb",
+        "libmariadb-dev-compat",
+        "mariadb-client",
+        "libjpeg-dev",
+        "libfreetype6",
+        "libfreetype6-dev",
+        "libssl-dev",
+        "libxml2-dev",
+        "zlib1g-dev",
+        "libxslt1-dev",
+        "libcairo2",
+        "libpango-1.0-0",
+        "libpangocairo-1.0-0",
+    ]
 
     [resources.database]
     type = "mysql"
