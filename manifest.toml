@@ -56,7 +56,6 @@ ram.runtime = "50M"
     [resources.permissions]
     main.url = "/"
     admin.url = "/admin"
-    admin.url = "admins"
 
     [resources.apt]
     packages = "mariadb_server python3-pip python3-venv cython3 npm python3-mysqldb libmariadb-dev-compat mariadb-client libjpeg-dev libfreetype6 libfreetype6-dev libssl-dev libxml2-dev zlib1g-dev libxslt1-dev libcairo2 libpango-1.0-0 libpangocairo-1.0-0"
