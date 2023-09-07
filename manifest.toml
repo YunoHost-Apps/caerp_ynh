@@ -12,7 +12,7 @@ version = "6.5.4~ynh2"
 maintainers = ["Salamandar"]
 
 [upstream]
-license = "AGPL-3.0-or-later"
+license = "AGPL-3.0"
 website = "https://endi.coop"
 demo = "https://demo.endi.coop"
 admindoc = "https://framagit.org/endi/endi"
