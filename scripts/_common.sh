@@ -4,28 +4,6 @@
 # COMMON VARIABLES
 #=================================================
 
-# dependencies used by the app (must be on a single line)
-#REMOVEME? pkg_dependencies=(
-    python3-pip
-    python3-venv
-    cython3
-
-    npm
-
-    python3-mysqldb
-    # libmariadbclient-dev
-    libmariadb-dev-compat
-    mariadb-client
-
-    libjpeg-dev libfreetype6 libfreetype6-dev
-    libssl-dev
-    libxml2-dev
-    zlib1g-dev
-
-    libxslt1-dev
-    libcairo2 libpango-1.0-0 libpangocairo-1.0-0
-)
-
 #=================================================
 # PERSONAL HELPERS
 #=================================================
