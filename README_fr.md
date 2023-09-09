@@ -31,7 +31,7 @@ enDI est un progiciel de gestion d'entreprise. C'est l'outil de pilotage de l'ac
 
 ## Captures d’écran
 
-![Capture d’écran de enDI](./doc/screenshots/example.jpg)
+![Capture d’écran de enDI](./doc/screenshots/accueil.png)
 
 ## Documentations et ressources
 

@@ -30,7 +30,7 @@ enDI is a business management software package. It is the management tool for ec
 
 ## Screenshots
 
-![Screenshot of enDI](./doc/screenshots/example.jpg)
+![Screenshot of enDI](./doc/screenshots/accueil.png)
 
 ## Documentation and resources
 
