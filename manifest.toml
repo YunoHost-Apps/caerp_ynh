@@ -7,7 +7,7 @@ name = "enDI"
 description.en = "Comptability software for CAE companies (french Communauté d'Activité et d'Emploi)"
 description.fr = "Progiciel de gestion comptable à l'usage des CAE (Communauté d'Activité et d'Emploi)"
 
-version = "6.5.4~ynh1"
+version = "6.5.4~ynh2"
 
 maintainers = ["Salamandar"]
 
@@ -20,7 +20,7 @@ userdoc = "https://doc.endi.coop"
 code = "https://framagit.org/endi/endi"
 
 [integration]
-yunohost = ">= 11.1.19"
+yunohost = ">= 11.2"
 architectures = "all"
 multi_instance = true
 ldap = false
