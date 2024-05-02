@@ -22,7 +22,6 @@ __ynh_endi_build() {
     ynh_install_nodejs --nodejs_version=16
 
     pushd "$install_dir/endi" 2>&1
-    ynh_script_progression --message="Downloading NPM dependencies..." --weight=1
         ynh_exec_as $app $ynh_node_load_PATH $ynh_npm --prefix js_sources install 2>&1
         ynh_exec_as $app $ynh_node_load_PATH $ynh_npm --prefix vue_sources install 2>&1
 
