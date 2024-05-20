@@ -3,7 +3,7 @@
 请勿手动编辑。
 -->
 
-# YunoHost 的 enDI
+# YunoHost 上的 enDI
 
 [![集成程度](https://dash.yunohost.org/integration/endi.svg)](https://dash.yunohost.org/appci/app/endi) ![工作状态](https://ci-apps.yunohost.org/ci/badges/endi.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/endi.maintain.svg)
 
