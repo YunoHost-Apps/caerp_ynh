@@ -20,7 +20,7 @@ userdoc = "https://doc.endi.coop"
 code = "https://framagit.org/endi/endi"
 
 [integration]
-yunohost = ">= 11.2"
+yunohost = ">= 11.2.12"
 architectures = "all"
 multi_instance = true
 ldap = false
