@@ -25,7 +25,7 @@ enDI is a business management software package. It is the management tool for ec
 - Support for the entrepreneurial journey and commercial activity of entrepreneurs
 
 
-**Versión proporcionada:** 6.6.4~ynh1
+**Versión proporcionada:** 6.6.4~ynh2
 
 **Demo:** <https://demo.endi.coop>
 
