@@ -7,7 +7,7 @@ name = "enDI"
 description.en = "Comptability software for CAE companies (french Communauté d'Activité et d'Emploi)"
 description.fr = "Progiciel de gestion comptable à l'usage des CAE (Communauté d'Activité et d'Emploi)"
 
-version = "6.6.4~ynh2"
+version = "2024.06.14~ynh1"
 
 maintainers = ["Salamandar"]
 
@@ -45,8 +45,8 @@ ram.runtime = "50M"
 
 [resources]
     [resources.sources.main]
-    url = "https://framagit.org/endi/endi/-/archive/ea2d73983d1b4f55201cb606dce5b58bc30a0553/endi-ea2d73983d1b4f55201cb606dce5b58bc30a0553.tar.bz2"
-    sha256 = "ba5e7a636689188d06a5ec4792cbc0f91e97e57d4ec220283fea5398a05f361d"
+    url = "https://framagit.org/endi/endi/-/archive/1f5661b796ba8996599be3b8d4c710a702f96ab9/endi-1f5661b796ba8996599be3b8d4c710a702f96ab9.tar.bz2"
+    sha256 = "2143f2e77c58f14ceeeccee80b94bddbc0e4d9f6fc803b80a0ba808c0a7455b1"
     autoupdate.strategy = "latest_gitlab_commit"
 
     [resources.ports]
