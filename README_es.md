@@ -5,7 +5,7 @@ No se debe editar a mano.
 
 # enDI para Yunohost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/endi.svg)](https://dash.yunohost.org/appci/app/endi) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/endi.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/endi.maintain.svg)
+[![Nivel de integración](https://dash.yunohost.org/integration/endi.svg)](https://ci-apps.yunohost.org/ci/apps/endi/) ![Estado funcional](https://ci-apps.yunohost.org/ci/badges/endi.status.svg) ![Estado En Mantención](https://ci-apps.yunohost.org/ci/badges/endi.maintain.svg)
 
 [![Instalar enDI con Yunhost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=endi)
 
@@ -25,7 +25,7 @@ enDI is a business management software package. It is the management tool for ec
 - Support for the entrepreneurial journey and commercial activity of entrepreneurs
 
 
-**Versión actual:** 6.6.4~ynh2
+**Versión actual:** 2024.06.25~ynh1
 
 **Demo:** <https://demo.endi.coop>
 
