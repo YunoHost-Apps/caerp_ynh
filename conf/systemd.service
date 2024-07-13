@@ -7,7 +7,7 @@ Type=simple
 User=__APP__
 Group=__APP__
 WorkingDirectory=__INSTALL_DIR__
-ExecStart=__INSTALL_DIR__/venv/bin/pserve endi.ini
+ExecStart=__INSTALL_DIR__/venv/bin/pserve caerp.ini
 StandardOutput=append:/var/log/__APP__/__APP__.log
 StandardError=inherit
 
