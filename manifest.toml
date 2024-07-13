@@ -63,7 +63,7 @@ ram.runtime = "50M"
     packages = [
         "mariadb-server",
         "mariadb-client",
-        "redis-server",
+        # "redis-server",
 
         "build-essential",
         "fonts-open-sans",

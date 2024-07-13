@@ -1,8 +1,6 @@
 #!/bin/bash
 
 #=================================================
-# GENERIC START
-#=================================================
 # IMPORT GENERIC HELPERS
 #=================================================
 
@@ -29,24 +27,24 @@ ynh_app_setting_set --app="$app" --key=redis_db --value="$redis_db"
 #=================================================
 ynh_script_progression --message="Setting up source files..." --weight=1
 
-ynh_app_setting_set --app="$app" --key=install_dir --value="$install_dir"
 ynh_setup_source --dest_dir="$install_dir/endi"
-
-__ynh_endi_patch_src
 
 chmod -R o-rwx "$install_dir"
 chown -R "$app:www-data" "$install_dir"
 
+# __ynh_endi_patch_src
+
 #=================================================
-# SPECIFIC SETUP
+# SETUP APPLICATION
 #=================================================
+ynh_script_progression --message="Building $app..." --weight=1
 
 __ynh_endi_build
 
 #=================================================
 # ADD A CONFIGURATION
 #=================================================
-ynh_script_progression --message="Adding a configuration file..." --weight=1
+ynh_script_progression --message="Adding $app's configuration file..." --weight=1
 
 ynh_add_config --template="endi.ini" --destination="$install_dir/endi.ini"
 
@@ -64,7 +62,7 @@ chmod 750 "/var/log/$app"
 #=================================================
 # SETUP APPLICATION
 #=================================================
-ynh_script_progression --message="Configuring enDI..." --weight=1
+ynh_script_progression --message="Configuring $app..." --weight=1
 
 __ynh_endi_migratedb
 __ynh_endi_add_admin
@@ -78,20 +76,17 @@ ynh_script_progression --message="Configuring log rotation..." --weight=1
 
 ynh_add_nginx_config
 
-# Create a dedicated systemd config
 ynh_add_systemd_config
+yunohost service add "$app" --description="enDI, logiciel de comptabilité pour CAE" --log="/var/log/$app/logfile.log"
 
-# Use logrotate to manage application logfile(s)
-ynh_use_logrotate
-
-yunohost service add "$app" --description="enDI, logiciel de comptabilité pour CAE" --log="/var/log/$app/$app.log"
+ynh_use_logrotate --logfile="/var/log/$app/logfile.log"
 
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
-ynh_script_progression --message="Starting a systemd service..." --weight=1
+ynh_script_progression --message="Starting $app's systemd service..." --weight=1
 
-ynh_systemd_action --service_name="$app" --action="start"
+ynh_systemd_action --service_name="$app" --action="start" --log_path="/var/log/$app/logfile.log"
 
 #=================================================
 # END OF SCRIPT

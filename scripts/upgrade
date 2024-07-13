@@ -1,8 +1,6 @@
 #!/bin/bash
 
 #=================================================
-# GENERIC START
-#=================================================
 # IMPORT GENERIC HELPERS
 #=================================================
 
@@ -10,13 +8,11 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# STANDARD UPGRADE STEPS
-#=================================================
 # STOP SYSTEMD SERVICE
 #=================================================
-ynh_script_progression --message="Stopping a systemd service..." --weight=1
+ynh_script_progression --message="Stopping $app's systemd service..." --weight=1
 
-ynh_systemd_action --service_name=$app --action="stop" --log_path="/var/log/$app/logfile.log"
+ynh_systemd_action --service_name="$app" --action="stop" --log_path="/var/log/$app/logfile.log"
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
@@ -24,28 +20,32 @@ ynh_systemd_action --service_name=$app --action="stop" --log_path="/var/log/$app
 ynh_script_progression --message="Upgrading source files..." --weight=1
 
 # Download, check integrity, uncompress and patch the source from app.src
-ynh_setup_source --dest_dir="$install_dir/endi"
-__ynh_endi_patch_src
+ynh_setup_source --dest_dir="$install_dir/endi" --full_replace --keep="endi.ini"
 
 chmod -R o-rwx "$install_dir"
-chown -R $app:www-data "$install_dir"
+chown -R "$app:www-data" "$install_dir"
+
+# __ynh_endi_patch_src
 
 #=================================================
 # UPDATE A CONFIG FILE
 #=================================================
-ynh_script_progression --message="Updating a configuration file..." --weight=1
+ynh_script_progression --message="Updating $app's configuration file..." --weight=1
 
 ynh_add_config --template="endi.ini" --destination="$install_dir/endi.ini"
 
 chmod 500 "$install_dir/endi.ini"
-chown $app:$app "$install_dir/endi.ini"
+chown "$app:$app" "$install_dir/endi.ini"
 
 #=================================================
-# SPECIFIC UPGRADE
+# SETUP APPLICATION
 #=================================================
-
+ynh_script_progression --message="Building $app..." --weight=1
 __ynh_endi_build
 
+#=================================================
+# SETUP APPLICATION
+#=================================================
 ynh_script_progression --message="Migrating databases..." --weight=1
 __ynh_endi_migratedb
 
@@ -58,18 +58,17 @@ ynh_add_nginx_config
 
 # Create a dedicated systemd config
 ynh_add_systemd_config
+yunohost service add "$app" --description="enDI, logiciel de comptabilité pour CAE" --log="/var/log/$app/logfile.log"
 
 # Use logrotate to manage app-specific logfile(s)
-ynh_use_logrotate --non-append
-
-yunohost service add $app --description="enDI, logiciel de comptabilité pour CAE" --log="/var/log/$app/$app.log"
+ynh_use_logrotate --logfile="/var/log/$app/logfile.log"
 
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
-ynh_script_progression --message="Starting a systemd service..." --weight=1
+ynh_script_progression --message="Starting $app's systemd service..." --weight=1
 
-ynh_systemd_action --service_name=$app --action="start" --log_path="/var/log/$app/logfile.log"
+ynh_systemd_action --service_name="$app" --action="start" --log_path="/var/log/$app/logfile.log"
 
 #=================================================
 # END OF SCRIPT
