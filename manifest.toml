@@ -2,10 +2,10 @@
 
 packaging_format = 2
 
-id = "endi"
-name = "enDI"
-description.en = "Comptability software for CAE companies (french Communauté d'Activité et d'Emploi)"
-description.fr = "Progiciel de gestion comptable à l'usage des CAE (Communauté d'Activité et d'Emploi)"
+id = "caerp"
+name = "CAERP"
+description.en = "Comptability software for CAE companies (french Communauté d'Activité et d'Emploi), the software behind enDi and MoOGLI"
+description.fr = "Progiciel de gestion comptable à l'usage des CAE (Communauté d'Activité et d'Emploi), le logiciel de enDi et MoOGLI"
 
 version = "2024.07.05~ynh1"
 
@@ -15,9 +15,8 @@ maintainers = ["Salamandar"]
 license = "AGPL-3.0"
 website = "https://endi.coop"
 demo = "https://demo.endi.coop"
-admindoc = "https://framagit.org/endi/endi"
 userdoc = "https://doc.endi.coop"
-code = "https://framagit.org/endi/endi"
+code = "https://framagit.org/caerp/caerp"
 
 [integration]
 yunohost = ">= 11.2.12"
@@ -45,7 +44,7 @@ ram.runtime = "50M"
 
 [resources]
     [resources.sources.main]
-    url = "https://framagit.org/endi/endi/-/archive/34ed0cc755e66d7150b263d8b2f9ff4881624271/endi-34ed0cc755e66d7150b263d8b2f9ff4881624271.tar.bz2"
+    url = "https://framagit.org/caerp/caerp/-/archive/34ed0cc755e66d7150b263d8b2f9ff4881624271/endi-34ed0cc755e66d7150b263d8b2f9ff4881624271.tar.bz2"
     sha256 = "c98e7210b320b5980846e9f08fe9fdf5a9eee78077e29728914cff0f71a568c7"
     autoupdate.strategy = "latest_gitlab_commit"
 

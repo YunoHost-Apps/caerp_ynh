@@ -26,10 +26,10 @@ ynh_change_url_nginx_config
 #=================================================
 ynh_script_progression --message="Updating $app's configuration file..." --weight=1
 
-ynh_add_config --template="endi.ini" --destination="$install_dir/endi.ini"
+ynh_add_config --template="caerp.ini" --destination="$install_dir/caerp.ini"
 
-chmod 500 "$install_dir/endi.ini"
-chown "$app:$app" "$install_dir/endi.ini"
+chmod 500 "$install_dir/caerp.ini"
+chown "$app:$app" "$install_dir/caerp.ini"
 
 #=================================================
 # START SYSTEMD SERVICE

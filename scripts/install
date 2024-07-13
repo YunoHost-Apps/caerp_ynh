@@ -26,20 +26,20 @@ sed -i 's|^#\? \?\(fr_FR.UTF-8 \?.*\)$|\1|' /etc/locale.gen
 #=================================================
 ynh_script_progression --message="Setting up source files..." --weight=1
 
-ynh_setup_source --dest_dir="$install_dir/endi"
+ynh_setup_source --dest_dir="$install_dir/caerp"
 
 chmod -R o-rwx "$install_dir"
 chown -R "$app:www-data" "$install_dir"
 
-# _ynh_endi_patch_src
+# _ynh_caerp_patch_src
 
 #=================================================
 # SETUP APPLICATION
 #=================================================
 ynh_script_progression --message="Building $app..." --weight=1
 
-_ynh_endi_build_ui
-_ynh_endi_build_python
+_ynh_caerp_build_ui
+_ynh_caerp_build_python
 
 #=================================================
 # ADD A CONFIGURATION
@@ -49,10 +49,10 @@ ynh_script_progression --message="Adding $app's configuration file..." --weight=
 redis_db=$(ynh_redis_get_free_db)
 ynh_app_setting_set --app="$app" --key=redis_db --value="$redis_db"
 
-ynh_add_config --template="endi.ini" --destination="$install_dir/endi.ini"
+ynh_add_config --template="caerp.ini" --destination="$install_dir/caerp.ini"
 
-chmod 500 "$install_dir/endi.ini"
-chown "$app:$app" "$install_dir/endi.ini"
+chmod 500 "$install_dir/caerp.ini"
+chown "$app:$app" "$install_dir/caerp.ini"
 
 #=================================================
 # CREATE LOG DIRECTORY
@@ -67,8 +67,8 @@ chmod 750 "/var/log/$app"
 #=================================================
 ynh_script_progression --message="Configuring $app..." --weight=1
 
-_ynh_endi_migratedb
-_ynh_endi_add_admin
+_ynh_caerp_migratedb
+_ynh_caerp_add_admin
 
 #=================================================
 # GENERIC FINALIZATION
@@ -80,7 +80,7 @@ ynh_script_progression --message="Configuring log rotation..." --weight=1
 ynh_add_nginx_config
 
 ynh_add_systemd_config
-yunohost service add "$app" --description="enDI, logiciel de comptabilité pour CAE" --log="/var/log/$app/logfile.log"
+yunohost service add "$app" --description="CAERP, logiciel de comptabilité pour CAE" --log="/var/log/$app/logfile.log"
 
 ynh_use_logrotate --logfile="/var/log/$app/logfile.log"
 

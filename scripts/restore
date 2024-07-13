@@ -34,7 +34,7 @@ ynh_restore_file --origin_path="/etc/nginx/conf.d/$domain.d/$app.conf"
 
 ynh_restore_file --origin_path="/etc/systemd/system/$app.service"
 systemctl enable "$app.service" --quiet
-yunohost service add "$app" --description="enDI, logiciel de comptabilité pour CAE" --log="/var/log/$app/logfile.log"
+yunohost service add "$app" --description="CAERP, logiciel de comptabilité pour CAE" --log="/var/log/$app/logfile.log"
 
 ynh_restore_file --origin_path="/etc/logrotate.d/$app"
 
