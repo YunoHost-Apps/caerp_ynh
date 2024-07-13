@@ -29,7 +29,7 @@ _ynh_endi_build_ui() {
     popd 2>&1
 }
 
-_ynh_endi_build_python
+_ynh_endi_build_python() {
     _ynh_python_venv_setup --venv_dir="$install_dir/venv"
     python_venv_site_packages=$(_ynh_python_venv_get_site_packages_dir -d "$install_dir/venv")
 
