@@ -75,6 +75,7 @@ ram.runtime = "50M"
         "libmariadb-dev",
         "libmariadb-dev-compat",
         "libpango-1.0-0",
+        "libpangocairo-1.0-0",
         "libssl-dev",
         "libxml2-dev",
         "libxslt1-dev",
