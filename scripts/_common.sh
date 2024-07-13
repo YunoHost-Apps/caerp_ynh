@@ -32,9 +32,9 @@ _ynh_endi_build_ui() {
 _ynh_endi_build_python
     _ynh_python_venv_setup --venv_dir="$install_dir/venv"
     python_venv_site_packages=$(_ynh_python_venv_get_site_packages_dir -d "$install_dir/venv")
-    chown -R "$app:www-data" "$install_dir/venv"
 
     pushd "$install_dir/endi" 2>&1
+        ynh_exec_as "$app" "$install_dir/venv/bin/python3" -m pip install -r requirements.txt
         ynh_exec_as "$app" "$install_dir/venv/bin/python3" ./setup.py install 2>&1
     popd 2>&1
 
@@ -68,7 +68,7 @@ _ynh_python_venv_setup() {
     local packages
     ynh_handle_getopts_args "$@"
 
-    python3 -m venv --system-site-packages "$venv_dir"
+    ynh_exec_as "$app" python3 -m venv --system-site-packages "$venv_dir"
 
     if [[ -n "${packages:-}" ]]; then
         IFS=" " read -r -a pip_packages <<< "$packages"
