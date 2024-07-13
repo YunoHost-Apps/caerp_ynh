@@ -53,7 +53,7 @@ _ynh_caerp_migratedb() {
 _ynh_caerp_add_admin() {
     pushd "$install_dir" 2>&1
         ynh_exec_as "$app" "$install_dir/venv/bin/caerp-admin" "$install_dir/caerp.ini" \
-            useradd --group=admin --user="admin" --pwd="$password" --email="admin@$domain"
+            useradd --group=admin --user="$admin" --pwd="$password" --email="admin@$domain"
     popd 2>&1
  }
 
