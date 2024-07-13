@@ -15,6 +15,13 @@ ynh_script_progression --message="Stopping $app's systemd service..." --weight=1
 ynh_systemd_action --service_name="$app" --action="stop" --log_path="/var/log/$app/logfile.log"
 
 #=================================================
+# INSTALL NODEJS
+#=================================================
+ynh_script_progression --message="Updating NodeJS..." --weight=1
+
+ynh_exec_warn_less ynh_install_nodejs --nodejs_version="$nodejs_version"
+
+#=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression --message="Upgrading source files..." --weight=1
@@ -25,7 +32,7 @@ ynh_setup_source --dest_dir="$install_dir/endi" --full_replace --keep="endi.ini"
 chmod -R o-rwx "$install_dir"
 chown -R "$app:www-data" "$install_dir"
 
-# __ynh_endi_patch_src
+# _ynh_endi_patch_src
 
 #=================================================
 # UPDATE A CONFIG FILE
@@ -41,13 +48,14 @@ chown "$app:$app" "$install_dir/endi.ini"
 # SETUP APPLICATION
 #=================================================
 ynh_script_progression --message="Building $app..." --weight=1
-__ynh_endi_build
+_ynh_endi_build_ui
+_ynh_endi_build_python
 
 #=================================================
 # SETUP APPLICATION
 #=================================================
 ynh_script_progression --message="Migrating databases..." --weight=1
-__ynh_endi_migratedb
+_ynh_endi_migratedb
 
 #=================================================
 # SETUP SYSTEMD

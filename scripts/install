@@ -8,19 +8,18 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
+# INSTALL NODEJS
+#=================================================
+ynh_script_progression --message="Installing NodeJS..." --weight=1
+
+ynh_exec_warn_less ynh_install_nodejs --nodejs_version="$nodejs_version"
+
+#=================================================
 # ENABLE MANDATORY FRENCH LOCALE
 #=================================================
 ynh_script_progression --message="Enabling french system locale..." --weight=1
 
 sed -i 's|^#\? \?\(fr_FR.UTF-8 \?.*\)$|\1|' /etc/locale.gen
-
-#=================================================
-# FIND A REDIS DATABASE
-#=================================================
-ynh_script_progression --message="Searching for an available Redis database..." --weight=1
-
-redis_db=$(ynh_redis_get_free_db)
-ynh_app_setting_set --app="$app" --key=redis_db --value="$redis_db"
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
@@ -32,19 +31,23 @@ ynh_setup_source --dest_dir="$install_dir/endi"
 chmod -R o-rwx "$install_dir"
 chown -R "$app:www-data" "$install_dir"
 
-# __ynh_endi_patch_src
+# _ynh_endi_patch_src
 
 #=================================================
 # SETUP APPLICATION
 #=================================================
 ynh_script_progression --message="Building $app..." --weight=1
 
-__ynh_endi_build
+_ynh_endi_build_ui
+_ynh_endi_build_python
 
 #=================================================
 # ADD A CONFIGURATION
 #=================================================
 ynh_script_progression --message="Adding $app's configuration file..." --weight=1
+
+redis_db=$(ynh_redis_get_free_db)
+ynh_app_setting_set --app="$app" --key=redis_db --value="$redis_db"
 
 ynh_add_config --template="endi.ini" --destination="$install_dir/endi.ini"
 
@@ -64,8 +67,8 @@ chmod 750 "/var/log/$app"
 #=================================================
 ynh_script_progression --message="Configuring $app..." --weight=1
 
-__ynh_endi_migratedb
-__ynh_endi_add_admin
+_ynh_endi_migratedb
+_ynh_endi_add_admin
 
 #=================================================
 # GENERIC FINALIZATION
