@@ -58,7 +58,7 @@ chown "$app:$app" "$install_dir/caerp.ini"
 # CREATE LOG DIRECTORY
 #=================================================
 
-mkdir "/var/log/$app"
+mkdir -p "/var/log/$app"
 chown -R "$app:$app" "/var/log/$app"
 chmod 750 "/var/log/$app"
 
