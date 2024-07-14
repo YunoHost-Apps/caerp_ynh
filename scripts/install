@@ -20,6 +20,7 @@ ynh_exec_warn_less ynh_install_nodejs --nodejs_version="$nodejs_version"
 ynh_script_progression --message="Enabling french system locale..." --weight=1
 
 sed -i 's|^#\? \?\(fr_FR.UTF-8 \?.*\)$|\1|' /etc/locale.gen
+locale-gen
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
