@@ -1,4 +1,8 @@
-enDI is a business management software package. It is the management tool for economic and social activity entirely dedicated to CAEs as well as to any company and group of independent entrepreneurs.
+enDI is a business management software package. It is the management tool for
+economic and social activity entirely dedicated to CAEs as well as to any
+company and group of independent entrepreneurs.
+
+It's the software behind the enDi and MoOGLi services.
 
 ### Features
 

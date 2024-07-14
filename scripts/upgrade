@@ -15,6 +15,22 @@ ynh_script_progression --message="Stopping $app's systemd service..." --weight=1
 ynh_systemd_action --service_name="$app" --action="stop" --log_path="/var/log/$app/logfile.log"
 
 #=================================================
+# ENSURE DOWNWARD COMPATIBILITY
+#=================================================
+ynh_script_progression --message="Ensuring downward compatibility..." --weight=1
+
+if [ -d "$install_dir/endi" ]; then
+    ynh_secure_remove --file="$install_dir/endi"
+fi
+
+if [ -f "$install_dir/endi.ini" ]; then
+    ynh_backup_if_checksum_is_different --file="$install_dir/endi.ini"
+    mv "$install_dir/endi.ini" "$install_dir/caerp.ini"
+    ynh_delete_file_checksum --file="$install_dir/endi.ini"
+    ynh_store_file_checksum --file="$install_dir/caerp.ini"
+fi
+
+#=================================================
 # INSTALL NODEJS
 #=================================================
 ynh_script_progression --message="Updating NodeJS..." --weight=1
@@ -22,40 +38,48 @@ ynh_script_progression --message="Updating NodeJS..." --weight=1
 ynh_exec_warn_less ynh_install_nodejs --nodejs_version="$nodejs_version"
 
 #=================================================
+# ENABLE MANDATORY FRENCH LOCALE
+#=================================================
+ynh_script_progression --message="Enabling french system locale..." --weight=1
+
+sed -i 's|^#\? \?\(fr_FR.UTF-8 \?.*\)$|\1|' /etc/locale.gen
+locale-gen
+
+#=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression --message="Upgrading source files..." --weight=1
 
 # Download, check integrity, uncompress and patch the source from app.src
-ynh_setup_source --dest_dir="$install_dir/endi" --full_replace --keep="endi.ini"
+ynh_setup_source --dest_dir="$install_dir/caerp" --full_replace --keep="endi.ini caerp.ini"
 
 chmod -R o-rwx "$install_dir"
 chown -R "$app:www-data" "$install_dir"
 
-# _ynh_endi_patch_src
+#=================================================
+# SETUP APPLICATION
+#=================================================
+ynh_script_progression --message="Building $app..." --weight=1
+
+_ynh_caerp_build_ui
+_ynh_caerp_build_python
 
 #=================================================
 # UPDATE A CONFIG FILE
 #=================================================
 ynh_script_progression --message="Updating $app's configuration file..." --weight=1
 
-ynh_add_config --template="endi.ini" --destination="$install_dir/endi.ini"
+ynh_add_config --template="caerp.ini" --destination="$install_dir/caerp.ini"
 
-chmod 500 "$install_dir/endi.ini"
-chown "$app:$app" "$install_dir/endi.ini"
-
-#=================================================
-# SETUP APPLICATION
-#=================================================
-ynh_script_progression --message="Building $app..." --weight=1
-_ynh_endi_build_ui
-_ynh_endi_build_python
+chmod 500 "$install_dir/caerp.ini"
+chown "$app:$app" "$install_dir/caerp.ini"
 
 #=================================================
 # SETUP APPLICATION
 #=================================================
 ynh_script_progression --message="Migrating databases..." --weight=1
-_ynh_endi_migratedb
+
+_ynh_caerp_migratedb
 
 #=================================================
 # SETUP SYSTEMD
@@ -66,7 +90,7 @@ ynh_add_nginx_config
 
 # Create a dedicated systemd config
 ynh_add_systemd_config
-yunohost service add "$app" --description="enDI, logiciel de comptabilité pour CAE" --log="/var/log/$app/logfile.log"
+yunohost service add "$app" --description="CAERP, logiciel de comptabilité pour CAE" --log="/var/log/$app/logfile.log"
 
 # Use logrotate to manage app-specific logfile(s)
 ynh_use_logrotate --logfile="/var/log/$app/logfile.log"
