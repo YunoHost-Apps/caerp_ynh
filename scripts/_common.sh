@@ -64,7 +64,7 @@ _ynh_python_venv_setup() {
     local packages
     ynh_handle_getopts_args "$@"
 
-    ynh_exec_as "$app" python3 -m venv --system-site-packages "$venv_dir"
+    ynh_exec_as "$app" python3 -m venv "$venv_dir"
 
     if [[ -n "${packages:-}" ]]; then
         IFS=" " read -r -a pip_packages <<< "$packages"
