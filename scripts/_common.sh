@@ -27,9 +27,6 @@ _ynh_caerp_build_python() {
     python_venv_site_packages=$(_ynh_python_venv_get_site_packages_dir -d "$install_dir/venv")
 
     pushd "$install_dir/caerp" 2>&1
-        # Might be a fix for `AttributeError: module 'lib' has no attribute 'X509_V_FLAG_NOTIFY_POLICY'`
-        ynh_exec_as "$app" "$install_dir/venv/bin/python3" -m pip uninstall cryptography
-
         ynh_exec_as "$app" "$install_dir/venv/bin/python3" -m pip install -r requirements.txt
         ynh_exec_as "$app" "$install_dir/venv/bin/python3" ./setup.py install 2>&1
     popd 2>&1
