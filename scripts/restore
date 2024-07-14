@@ -9,6 +9,21 @@ source ../settings/scripts/_common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
+# INSTALL NODEJS
+#=================================================
+ynh_script_progression --message="Installing NodeJS..." --weight=1
+
+ynh_exec_warn_less ynh_install_nodejs --nodejs_version="$nodejs_version"
+
+#=================================================
+# ENABLE MANDATORY FRENCH LOCALE
+#=================================================
+ynh_script_progression --message="Enabling french system locale..." --weight=1
+
+sed -i 's|^#\? \?\(fr_FR.UTF-8 \?.*\)$|\1|' /etc/locale.gen
+locale-gen
+
+#=================================================
 # RESTORE THE APP MAIN DIR
 #=================================================
 ynh_script_progression --message="Restoring the app main directory..." --weight=1
