@@ -3,22 +3,24 @@ Nota bene : ce README est automatiquement généré par <https://github.com/Yu
 Il NE doit PAS être modifié à la main.
 -->
 
-# enDI pour YunoHost
+# CAERP pour YunoHost
 
-[![Niveau d’intégration](https://dash.yunohost.org/integration/endi.svg)](https://ci-apps.yunohost.org/ci/apps/endi/) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/endi.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/endi.maintain.svg)
+[![Niveau d’intégration](https://dash.yunohost.org/integration/caerp.svg)](https://ci-apps.yunohost.org/ci/apps/caerp/) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/caerp.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/caerp.maintain.svg)
 
-[![Installer enDI avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=endi)
+[![Installer CAERP avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=caerp)
 
 *[Lire le README dans d'autres langues.](./ALL_README.md)*
 
-> *Ce package vous permet d’installer enDI rapidement et simplement sur un serveur YunoHost.*  
+> *Ce package vous permet d’installer CAERP rapidement et simplement sur un serveur YunoHost.*  
 > *Si vous n’avez pas YunoHost, consultez [ce guide](https://yunohost.org/install) pour savoir comment l’installer et en profiter.*
 
 ## Vue d’ensemble
 
-enDI est un progiciel de gestion d'entreprise. c'est l'outil de pilotage de
+CAERP est un progiciel de gestion d'entreprise. c'est l'outil de pilotage de
 l'activité économique et sociale entièrement dédié aux CAE ainsi qu'à toute
 entreprise et collectif d'entrepreneur.euse.s indépendant.e.s.
+
+C'est le logiciel derrière les services enDi et MoOGLI.
 
 ### Fonctionnalités
 
@@ -35,33 +37,32 @@ Il permet aux équipes d'appui une simplification, et une automatisation sur mes
 * Accompagnement du parcours entrepreneurial et de l'activité commerciale des entrepreneurs
 
 
-**Version incluse :** 6.6.4~ynh2
+**Version incluse :** 2024.07.05~ynh1
 
 **Démo :** <https://demo.endi.coop>
 
 ## Captures d’écran
 
-![Capture d’écran de enDI](./doc/screenshots/accueil.png)
+![Capture d’écran de CAERP](./doc/screenshots/accueil.png)
 
 ## Documentations et ressources
 
 - Site officiel de l’app : <https://endi.coop>
 - Documentation officielle utilisateur : <https://doc.endi.coop>
-- Documentation officielle de l’admin : <https://framagit.org/endi/endi>
-- Dépôt de code officiel de l’app : <https://framagit.org/endi/endi>
-- YunoHost Store : <https://apps.yunohost.org/app/endi>
-- Signaler un bug : <https://github.com/YunoHost-Apps/endi_ynh/issues>
+- Dépôt de code officiel de l’app : <https://framagit.org/caerp/caerp>
+- YunoHost Store : <https://apps.yunohost.org/app/caerp>
+- Signaler un bug : <https://github.com/YunoHost-Apps/caerp_ynh/issues>
 
 ## Informations pour les développeurs
 
-Merci de faire vos pull request sur la [branche `testing`](https://github.com/YunoHost-Apps/endi_ynh/tree/testing).
+Merci de faire vos pull request sur la [branche `testing`](https://github.com/YunoHost-Apps/caerp_ynh/tree/testing).
 
 Pour essayer la branche `testing`, procédez comme suit :
 
 ```bash
-sudo yunohost app install https://github.com/YunoHost-Apps/endi_ynh/tree/testing --debug
+sudo yunohost app install https://github.com/YunoHost-Apps/caerp_ynh/tree/testing --debug
 ou
-sudo yunohost app upgrade endi -u https://github.com/YunoHost-Apps/endi_ynh/tree/testing --debug
+sudo yunohost app upgrade caerp -u https://github.com/YunoHost-Apps/caerp_ynh/tree/testing --debug
 ```
 
 **Plus d’infos sur le packaging d’applications :** <https://yunohost.org/packaging_apps>
