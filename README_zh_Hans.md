@@ -29,7 +29,7 @@ It's the software behind the enDi and MoOGLi services.
 - Support for the entrepreneurial journey and commercial activity of entrepreneurs
 
 
-**分发版本：** 2024.07.05~ynh1
+**分发版本：** 2024.07.12~ynh1
 
 **演示：** <https://demo.endi.coop>
 

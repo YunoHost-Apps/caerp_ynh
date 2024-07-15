@@ -37,7 +37,7 @@ Il permet aux équipes d'appui une simplification, et une automatisation sur mes
 * Accompagnement du parcours entrepreneurial et de l'activité commerciale des entrepreneurs
 
 
-**Version incluse :** 2024.07.05~ynh1
+**Version incluse :** 2024.07.12~ynh1
 
 **Démo :** <https://demo.endi.coop>
 
