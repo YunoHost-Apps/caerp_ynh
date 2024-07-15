@@ -7,7 +7,7 @@ name = "CAERP"
 description.en = "Comptability software for CAE companies (french Communauté d'Activité et d'Emploi), the software behind enDi and MoOGLI"
 description.fr = "Progiciel de gestion comptable à l'usage des CAE (Communauté d'Activité et d'Emploi), le logiciel de enDi et MoOGLI"
 
-version = "2024.07.05~ynh1"
+version = "2024.07.12~ynh1"
 
 maintainers = ["Salamandar"]
 
@@ -44,8 +44,8 @@ ram.runtime = "50M"
 
 [resources]
     [resources.sources.main]
-    url = "https://framagit.org/caerp/caerp/-/archive/34ed0cc755e66d7150b263d8b2f9ff4881624271/endi-34ed0cc755e66d7150b263d8b2f9ff4881624271.tar.bz2"
-    sha256 = "c98e7210b320b5980846e9f08fe9fdf5a9eee78077e29728914cff0f71a568c7"
+    url = "https://framagit.org/caerp/caerp/-/archive/1eb8228d977cf6f5790e2d1953c61599a6c0b1df/caerp-1eb8228d977cf6f5790e2d1953c61599a6c0b1df.tar.bz2"
+    sha256 = "87436aa0925ec860569464e329cdd435997e0f90699efea7a2dd590868d83c4b"
     autoupdate.strategy = "latest_gitlab_commit"
 
     [resources.ports]
